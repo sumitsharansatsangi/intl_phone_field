@@ -318,6 +318,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       final initialPhoneNumber = PhoneNumber(
         countryISOCode: _selectedCountry.code,
         countryCode: '+${_selectedCountry.dialCode}',
+        countryName: _selectedCountry.name,
         number: widget.initialValue ?? '',
       );
 
@@ -384,6 +385,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
           PhoneNumber(
             countryISOCode: _selectedCountry.code,
             countryCode: '+${_selectedCountry.dialCode}',
+            countryName: _selectedCountry.name,
             number: value!,
           ),
         );
@@ -392,6 +394,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
         final phoneNumber = PhoneNumber(
           countryISOCode: _selectedCountry.code,
           countryCode: '+${_selectedCountry.dialCode}',
+          countryName: _selectedCountry.name,
           number: value,
         );
 
