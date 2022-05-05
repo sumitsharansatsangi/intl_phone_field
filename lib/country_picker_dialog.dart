@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/countries.dart';
 import 'package:intl_phone_field/helpers.dart';
 
@@ -75,8 +76,8 @@ class _CountryPickerDialogState extends State<CountryPickerDialog> {
   Widget build(BuildContext context) {
     final mediaWidth = MediaQuery.of(context).size.width;
     final width = widget.style?.width ?? mediaWidth;
-    final defaultHorizontalPadding = 40.0;
-    final defaultVerticalPadding = 24.0;
+    final defaultHorizontalPadding = 30.w;
+    final defaultVerticalPadding = 18.h;
     return Dialog(
       insetPadding: EdgeInsets.symmetric(
           vertical: defaultVerticalPadding,
@@ -94,8 +95,9 @@ class _CountryPickerDialogState extends State<CountryPickerDialog> {
                 cursorColor: widget.style?.searchFieldCursorColor,
                 decoration: widget.style?.searchFieldInputDecoration ??
                     InputDecoration(
-                      suffixIcon: Icon(Icons.search),
+                      suffixIcon: Icon(Icons.search, size: 20.sp,),
                       labelText: widget.searchText,
+                      labelStyle: TextStyle(fontSize: 13.sp)
                     ),
                 onChanged: (value) {
                   _filteredCountries = isNumeric(value)
@@ -111,7 +113,7 @@ class _CountryPickerDialogState extends State<CountryPickerDialog> {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15.h),
             Expanded(
               child: ListView.builder(
                 shrinkWrap: true,
@@ -122,18 +124,18 @@ class _CountryPickerDialogState extends State<CountryPickerDialog> {
                       leading: Image.asset(
                         'assets/flags/${_filteredCountries[index].code.toLowerCase()}.png',
                         package: 'intl_phone_field',
-                        width: 32,
+                        width: 20.w,
                       ),
                       contentPadding: widget.style?.listTilePadding,
                       title: Text(
                         _filteredCountries[index].name,
                         style: widget.style?.countryNameStyle ??
-                            TextStyle(fontWeight: FontWeight.w700),
+                            TextStyle(fontWeight: FontWeight.w700,fontSize: 13.sp),
                       ),
                       trailing: Text(
                         '+${_filteredCountries[index].dialCode}',
                         style: widget.style?.countryCodeStyle ??
-                            TextStyle(fontWeight: FontWeight.w700),
+                            TextStyle(fontWeight: FontWeight.w700,fontSize: 13.sp),
                       ),
                       onTap: () {
                         _selectedCountry = _filteredCountries[index];

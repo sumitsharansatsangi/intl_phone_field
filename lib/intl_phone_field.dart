@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 
 import './countries.dart';
@@ -373,6 +374,7 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
       showCursor: widget.showCursor,
       onFieldSubmitted: widget.onSubmitted,
       decoration: widget.decoration.copyWith(
+
         prefixIcon: _buildFlagsButton(),
         counterText: !widget.enabled ? '' : null,
       ),
@@ -437,15 +439,15 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                     widget.showDropdownIcon &&
                     widget.dropdownIconPosition == IconPosition.leading) ...[
                   widget.dropdownIcon,
-                  SizedBox(width: 4),
+                  SizedBox(width: 2.w),
                 ],
                 if (widget.showCountryFlag) ...[
                   Image.asset(
                     'assets/flags/${_selectedCountry.code.toLowerCase()}.png',
                     package: 'intl_phone_field',
-                    width: 32,
+                    width: 24.sp,
                   ),
-                  SizedBox(width: 8),
+                  SizedBox(width: 5.w),
                 ],
                 FittedBox(
                   child: Text(
@@ -456,10 +458,10 @@ class _IntlPhoneFieldState extends State<IntlPhoneField> {
                 if (widget.enabled &&
                     widget.showDropdownIcon &&
                     widget.dropdownIconPosition == IconPosition.trailing) ...[
-                  SizedBox(width: 4),
+                  SizedBox(width: 2.w),
                   widget.dropdownIcon,
                 ],
-                SizedBox(width: 8),
+                SizedBox(width: 5.w),
               ],
             ),
           ),

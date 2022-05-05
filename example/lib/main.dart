@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 
 void main() {
@@ -15,7 +16,11 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return ScreenUtilInit(
+        designSize: const Size(360, 712),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder: (_) => MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
@@ -52,6 +57,7 @@ class _MyAppState extends State<MyApp> {
                   height: 10,
                 ),
                 IntlPhoneField(
+                  dropdownTextStyle: TextStyle(fontSize: 12.sp),
                   decoration: InputDecoration(
                     labelText: 'Phone Number',
                     border: OutlineInputBorder(
@@ -81,6 +87,6 @@ class _MyAppState extends State<MyApp> {
           ),
         ),
       ),
-    );
+    ));
   }
 }
